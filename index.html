@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es" class="lang-es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel Brand Taborda · Software Engineer · AI & Cloud</title>
+  <meta name="description" content="Daniel Brand Taborda — Ingeniero de software en IA agéntica y arquitectura en la nube (AWS, Google Cloud). Medellín, Colombia.">
+  <meta property="og:title" content="Daniel Brand Taborda · AI & Cloud Engineer">
+  <meta property="og:description" content="Sistemas agénticos, extracción documental, evaluación de LLMs y arquitectura cloud.">
+  <meta property="og:image" content="assets/daniel.jpg">
+  <meta name="theme-color" content="#07090d">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2307090d'/><text x='50%' y='58%' text-anchor='middle' font-family='monospace' font-size='28' font-weight='700' fill='%2334f5c5'>DB</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="graph" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="#top" class="logo"><span class="logo-dot"></span><span>daniel<span class="dim">.brand</span></span></a>
+    <nav class="nav-links">
+      <a href="#about"><span class="es">Perfil</span><span class="en">About</span></a>
+      <a href="#work"><span class="es">Trabajo</span><span class="en">Work</span></a>
+      <a href="#experience"><span class="es">Experiencia</span><span class="en">Experience</span></a>
+      <a href="#projects"><span class="es">Proyectos</span><span class="en">Projects</span></a>
+      <a href="#contact"><span class="es">Contacto</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="nav-actions">
+      <button class="chip" id="langBtn" aria-label="Cambiar idioma / Switch language"><span class="on-es">ES</span><span class="sep">/</span><span class="on-en">EN</span></button>
+      <button class="chip icon" id="themeBtn" aria-label="Cambiar tema">
+        <svg class="moon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></g></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="status reveal"><span class="pulse"></span>
+          <span class="es">Abierto a nuevos retos · Medellín, CO</span>
+          <span class="en">Open to new challenges · Medellín, CO</span>
+        </p>
+        <h1 class="reveal">
+          <span class="line">Daniel Brand</span>
+          <span class="line grad">Taborda</span>
+        </h1>
+        <p class="typed reveal mono">&gt; <span id="typed"></span><span class="caret">▌</span></p>
+        <p class="lead reveal">
+          <span class="es">Construyo <strong>sistemas agénticos</strong> y servicios de IA en producción sobre <strong>AWS</strong> y <strong>Google Cloud</strong>. Me importa la ingeniería alrededor del modelo: contratos, procesamiento asíncrono, observabilidad, seguridad y costo.</span>
+          <span class="en">I build production <strong>agentic systems</strong> and AI services on <strong>AWS</strong> and <strong>Google Cloud</strong>. I care about the engineering around the model: contracts, async processing, observability, safety and cost.</span>
+        </p>
+        <div class="cta reveal">
+          <a href="#work" class="btn primary"><span class="es">Ver mi trabajo</span><span class="en">See my work</span> <span aria-hidden="true">→</span></a>
+          <a href="assets/cv-daniel-brand-taborda-es.pdf" class="btn ghost es" download>CV PDF ↓</a>
+          <a href="assets/resume-daniel-brand-taborda-en.pdf" class="btn ghost en" download>Resume PDF ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal" id="photoCard">
+        <div class="photo-frame">
+          <img src="assets/daniel.jpg" alt="Daniel Brand Taborda" width="720" height="829">
+          <div class="scan" aria-hidden="true"></div>
+        </div>
+        <div class="badge b1 mono">AWS Solutions Architect</div>
+        <div class="badge b2 mono">LangGraph · MCP</div>
+        <div class="badge b3 mono">4+ <span class="es">años</span><span class="en">years</span></div>
+      </div>
+    </section>
+
+    <!-- TERMINAL -->
+    <section class="terminal-wrap reveal" aria-label="Terminal interactiva">
+      <div class="terminal" id="terminal">
+        <div class="term-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="mono term-title">daniel@portfolio: ~</span>
+          <span class="mono term-hint"><span class="es">escribe</span><span class="en">type</span> <b>help</b></span>
+        </div>
+        <div class="term-body mono" id="termBody"></div>
+        <form class="term-input mono" id="termForm" autocomplete="off">
+          <label for="termIn"><span class="prompt">❯</span></label>
+          <input id="termIn" spellcheck="false" aria-label="comando">
+        </form>
+        <div class="term-suggest mono" id="termSuggest"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT / STATS -->
+    <section id="about" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">01</span><span class="es">Perfil</span><span class="en">About</span></h2>
+      <div class="about-grid">
+        <div class="card about-card reveal spot">
+          <p class="es"><u class="hl">Ingeniero de Sistemas</u> (Universidad de Antioquia), con maestría en curso en <strong>Gerencia de Proyectos</strong> (UPB). Me especializo en agentes conversacionales, orquestación con grafos, extracción documental, evaluación de modelos y servicios escalables.</p>
+          <p class="en"><u class="hl">Systems Engineer</u> (Universidad de Antioquia), currently pursuing a <strong>Master's in Project Management</strong> (UPB). I specialize in conversational agents, graph-based orchestration, document extraction, model evaluation and scalable services.</p>
+          <p class="es">Mi patrón: un caso de negocio se baja a una arquitectura, se implementa como servicio con contrato claro, se deja observable y se documenta para que otro equipo lo consuma. No dependo de un lenguaje: priorizo fundamentos sólidos y uso la IA como acelerador.</p>
+          <p class="en">My pattern: a business case becomes an architecture, gets implemented as a service with a clear contract, is made observable and documented so another team can consume it. I'm not tied to a language: I prioritize solid fundamentals and use AI as an accelerator.</p>
+          <p class="es">También <strong>enseño</strong> computación en la nube, IA y gerencia, y disfruto liderar y acompañar equipos.</p>
+          <p class="en">I also <strong>teach</strong> cloud computing, AI and management, and enjoy leading and mentoring teams.</p>
+        </div>
+        <div class="stats">
+          <div class="stat card reveal spot"><b class="count" data-to="4" data-suffix="+">0</b><span class="es">años en backend, IA y cloud</span><span class="en">years in backend, AI & cloud</span></div>
+          <div class="stat card reveal spot"><b class="count" data-to="2">0</b><span class="es">nubes: AWS y Google Cloud</span><span class="en">clouds: AWS & Google Cloud</span></div>
+          <div class="stat card reveal spot"><b class="count" data-to="33">0</b><span class="es">repos públicos en GitHub</span><span class="en">public repos on GitHub</span></div>
+          <div class="stat card reveal spot"><b>B2</b><span class="es">inglés · español nativo</span><span class="en">English · native Spanish</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / CAPABILITIES -->
+    <section id="work" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">02</span><span class="es">Lo que construyo</span><span class="en">What I build</span></h2>
+      <p class="section-sub reveal">
+        <span class="es">Trabajo real en producción, descrito por la capacidad que resuelve.</span>
+        <span class="en">Real production work, described by the capability it delivers.</span>
+      </p>
+      <div class="cards">
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">🤖</div>
+          <h3><span class="es">Agentes desacoplados</span><span class="en">Decoupled agents</span></h3>
+          <p class="es">Agentes en Amazon Bedrock que viven aparte del backend: contratos gateway↔agente, heartbeats por turno, deduplicación, límite de concurrencia y proveedor de respaldo.</p>
+          <p class="en">Agents on Amazon Bedrock living apart from the backend: gateway↔agent contracts, per-turn heartbeats, deduplication, concurrency limits and fallback providers.</p>
+          <ul class="tags"><li>LangGraph</li><li>Strands Agents</li><li>Bedrock</li><li>MCP</li></ul>
+        </article>
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">🧭</div>
+          <h3><span class="es">Orquestación de subagentes</span><span class="en">Subagent orchestration</span></h3>
+          <p class="es">Asistentes que enrutan consultas a subagentes especializados y actúan vía herramientas MCP. Modo sombra para medir calidad antes de automatizar.</p>
+          <p class="en">Assistants that route queries to specialized subagents and act through MCP tools. Shadow mode to measure quality before automating.</p>
+          <ul class="tags"><li>LangChain</li><li>RAG</li><li>OpenSearch</li><li>Few-shot</li></ul>
+        </article>
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">📄</div>
+          <h3><span class="es">Extracción documental</span><span class="en">Document extraction</span></h3>
+          <p class="es">APIs que convierten contratos, identificaciones y comprobantes en datos estructurados. Dos caminos: visión (precisión) u OCR + modelo pequeño (costo).</p>
+          <p class="en">APIs turning contracts, IDs and receipts into structured data. Two paths: vision model (accuracy) or OCR + small model (cost).</p>
+          <ul class="tags"><li>Textract</li><li>Vision LLMs</li><li>Pydantic</li><li>Celery</li></ul>
+        </article>
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">✅</div>
+          <h3><span class="es">Evaluación de LLMs</span><span class="en">LLM evaluation</span></h3>
+          <p class="es">API propia para evaluar relevancia, coherencia y toxicidad de respuestas de chat, más baterías automáticas de pruebas de agentes y recuperación.</p>
+          <p class="en">In-house API scoring chat answers for relevance, coherence and toxicity, plus automated test batteries for agents and retrieval.</p>
+          <ul class="tags"><li>Ragas</li><li>Promptfoo</li><li>LangSmith</li></ul>
+        </article>
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">🛡️</div>
+          <h3><span class="es">Seguridad como infraestructura</span><span class="en">Safety as infrastructure</span></h3>
+          <p class="es">Políticas de seguridad de modelos reutilizables, publicadas como infraestructura y consumidas por identificador, para que ningún equipo las configure a mano.</p>
+          <p class="en">Reusable model-safety policies published as infrastructure and consumed by ID, so no team has to configure them by hand.</p>
+          <ul class="tags"><li>Terraform</li><li>Guardrails</li><li>CI/CD</li></ul>
+        </article>
+        <article class="card cap reveal spot tilt">
+          <div class="cap-icon">💸</div>
+          <h3>FinOps & LLM FinOps</h3>
+          <p class="es">Conteo de tokens por caso de uso, modelo elegido por costo por tarea, caché de contexto y caminos baratos vs. precisos.</p>
+          <p class="en">Token accounting per use case, model choice by cost per task, context caching and cheap-vs-precise paths.</p>
+          <ul class="tags"><li>Cost per task</li><li>Caching</li><li>Observability</li></ul>
+        </article>
+      </div>
+
+      <!-- Architecture pipeline -->
+      <div class="arch reveal">
+        <h3 class="arch-title mono"><span class="es">// el molde de mis servicios</span><span class="en">// how my services are shaped</span> <span class="dim">— <span class="es">haz clic en cada nodo</span><span class="en">click each node</span></span></h3>
+        <div class="pipeline" role="tablist">
+          <button class="node active" data-i="0" role="tab"><span class="n">01</span><span class="es">Contrato</span><span class="en">Contract</span></button>
+          <span class="edge"></span>
+          <button class="node" data-i="1" role="tab"><span class="n">02</span><span class="es">Grafo de turno</span><span class="en">Turn graph</span></button>
+          <span class="edge"></span>
+          <button class="node" data-i="2" role="tab"><span class="n">03</span><span class="es">Trabajo durable</span><span class="en">Durable work</span></button>
+          <span class="edge"></span>
+          <button class="node" data-i="3" role="tab"><span class="n">04</span><span class="es">Conocimiento</span><span class="en">Knowledge</span></button>
+          <span class="edge"></span>
+          <button class="node" data-i="4" role="tab"><span class="n">05</span><span class="es">Seguridad</span><span class="en">Safety</span></button>
+          <span class="edge"></span>
+          <button class="node" data-i="5" role="tab"><span class="n">06</span><span class="es">Operación</span><span class="en">Operations</span></button>
+        </div>
+        <div class="arch-detail card" id="archDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">03</span><span class="es">Experiencia</span><span class="en">Experience</span></h2>
+      <ol class="timeline">
+        <li class="t-item reveal">
+          <div class="t-dot"></div>
+          <div class="card t-card spot">
+            <div class="t-head">
+              <h3><span class="es">Ingeniero de software</span><span class="en">Software Engineer</span> <span class="at">@ itti</span></h3>
+              <span class="mono t-date"><span class="es">nov 2025 – nov 2026</span><span class="en">Nov 2025 – Nov 2026</span></span>
+            </div>
+            <ul class="es">
+              <li>Diseñé y desarrollé <strong>sistemas agénticos en AWS con Amazon Bedrock</strong> usando LangGraph, LangChain, Strands Agents y MCP.</li>
+              <li>APIs de extracción inteligente de documentos con visión, OCR y validación estructurada, con caminos de precisión y de costo.</li>
+              <li>Agentes conversacionales desacoplados, orquestación de subagentes, recuperación semántica y procesamiento asíncrono con workers y colas.</li>
+              <li>Evaluaciones de relevancia, coherencia y toxicidad (Ragas, Promptfoo), controles de seguridad de modelos y CI/CD; redacté RFCs y coordiné con plataforma.</li>
+            </ul>
+            <ul class="en">
+              <li>Designed and built <strong>agentic systems on AWS with Amazon Bedrock</strong> using LangGraph, LangChain, Strands Agents and MCP.</li>
+              <li>Intelligent document-extraction APIs with vision models, OCR and structured validation, with accuracy- and cost-optimized paths.</li>
+              <li>Decoupled conversational agents, subagent orchestration, semantic retrieval and async processing with workers and queues.</li>
+              <li>Relevance, coherence and toxicity evaluations (Ragas, Promptfoo), model-safety controls and CI/CD; authored RFCs and coordinated with platform teams.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="t-item reveal">
+          <div class="t-dot"></div>
+          <div class="card t-card spot">
+            <div class="t-head">
+              <h3><span class="es">Ingeniero de software</span><span class="en">Software Engineer</span> <span class="at">@ 150 POR CIENTO</span></h3>
+              <span class="mono t-date"><span class="es">sept 2025 – nov 2025</span><span class="en">Sep 2025 – Nov 2025</span></span>
+            </div>
+            <ul class="es"><li>Backend de un aplicativo de visualización de KPI para una multinacional de consumo masivo: cálculos matemáticos y lógica de negocio.</li></ul>
+            <ul class="en"><li>Backend for a KPI visualization app for a multinational consumer-goods company: mathematical calculations and business logic.</li></ul>
+          </div>
+        </li>
+        <li class="t-item reveal">
+          <div class="t-dot"></div>
+          <div class="card t-card spot">
+            <div class="t-head">
+              <h3><span class="es">Desarrollador backend</span><span class="en">Backend Developer</span> <span class="at">@ guane Enterprises</span></h3>
+              <span class="mono t-date"><span class="es">jun 2022 – ago 2025</span><span class="en">Jun 2022 – Aug 2025</span></span>
+            </div>
+            <ul class="es">
+              <li>Implementé <strong>sistemas agénticos con Vertex AI</strong> y desplegué arquitecturas distribuidas en <strong>Kubernetes sobre Google Cloud</strong>.</li>
+              <li>Extracción de facturas médicas orientada a eventos.</li>
+              <li>Levantamiento de requisitos con clientes, planeación de proyectos y elaboración de presupuestos.</li>
+            </ul>
+            <ul class="en">
+              <li>Implemented <strong>agentic systems with Vertex AI</strong> and deployed distributed architectures on <strong>Kubernetes on Google Cloud</strong>.</li>
+              <li>Event-driven medical-invoice extraction.</li>
+              <li>Requirements gathering with clients, project planning and budgeting.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">04</span>Stack</h2>
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee-track mono">
+          <span>Python</span><span>FastAPI</span><span>LangGraph</span><span>LangChain</span><span>Strands Agents</span><span>MCP</span><span>Amazon Bedrock</span><span>Vertex AI</span><span>Kubernetes</span><span>Terraform</span><span>Docker</span><span>Celery</span><span>SQS/SNS</span><span>RabbitMQ</span><span>OpenSearch</span><span>pgvector</span>
+          <span>Python</span><span>FastAPI</span><span>LangGraph</span><span>LangChain</span><span>Strands Agents</span><span>MCP</span><span>Amazon Bedrock</span><span>Vertex AI</span><span>Kubernetes</span><span>Terraform</span><span>Docker</span><span>Celery</span><span>SQS/SNS</span><span>RabbitMQ</span><span>OpenSearch</span><span>pgvector</span>
+        </div>
+      </div>
+      <div class="stack-grid">
+        <div class="card stack-col reveal spot">
+          <h3 class="mono">ai_backend/</h3>
+          <ul class="pills"><li>Python</li><li>FastAPI</li><li>Pydantic</li><li>LangGraph</li><li>LangChain</li><li>Strands Agents</li><li>MCP</li><li>RAG</li><li>Celery</li><li>RabbitMQ</li><li>SQS/SNS</li></ul>
+        </div>
+        <div class="card stack-col reveal spot">
+          <h3 class="mono">cloud_infra/</h3>
+          <ul class="pills"><li>AWS Bedrock</li><li>S3</li><li>Textract</li><li>ECS</li><li>Lambda</li><li>Vertex AI</li><li>Cloud Run</li><li>Kubernetes</li><li>Docker</li><li>Terraform</li><li>GitHub Actions</li></ul>
+        </div>
+        <div class="card stack-col reveal spot">
+          <h3 class="mono">data_quality/</h3>
+          <ul class="pills"><li>PostgreSQL</li><li>DynamoDB</li><li>OpenSearch</li><li>Redis / Valkey</li><li>pgvector</li><li>Pytest</li><li>Ruff · mypy</li><li>Ragas</li><li>Promptfoo</li><li>LangSmith</li></ul>
+        </div>
+        <div class="card stack-col reveal spot">
+          <h3 class="mono">practices/</h3>
+          <ul class="pills"><li class="es">Arquitectura hexagonal</li><li class="en">Hexagonal architecture</li><li class="es">Arquitectura limpia</li><li class="en">Clean architecture</li><li class="es">Eventos</li><li class="en">Event-driven</li><li class="es">Observabilidad</li><li class="en">Observability</li><li>RFCs</li><li class="es">Liderazgo técnico</li><li class="en">Tech leadership</li><li>React · Vite</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">05</span><span class="es">Proyectos en GitHub</span><span class="en">GitHub projects</span></h2>
+      <div class="filters reveal" id="filters">
+        <button class="chip active" data-f="all"><span class="es">Todos</span><span class="en">All</span></button>
+        <button class="chip" data-f="ai">AI / ML</button>
+        <button class="chip" data-f="backend">Backend</button>
+        <button class="chip" data-f="cs"><span class="es">Fundamentos</span><span class="en">Fundamentals</span></button>
+      </div>
+      <div class="repos" id="repos">
+        <a class="card repo reveal spot" data-cat="backend" href="https://github.com/danielBrand12/FastAPI-Celery-NotificationService" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">📦 FastAPI-Celery-NotificationService</span><span class="arrow">↗</span></div>
+          <p class="es">Servicio de notificaciones asíncrono: FastAPI + Celery con RabbitMQ (CloudAMQP), PostgreSQL y SendGrid, todo en Docker Compose.</p>
+          <p class="en">Async notification service: FastAPI + Celery over RabbitMQ (CloudAMQP), PostgreSQL and SendGrid, all on Docker Compose.</p>
+          <div class="repo-meta mono"><i class="lang py"></i>Python · Docker</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="ai" href="https://github.com/danielBrand12/setiment-analysis" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">🧠 sentiment-analysis</span><span class="arrow">↗</span></div>
+          <p class="es">BiLSTM para clasificar reseñas de IMDB: 86.6% de exactitud y F1 de 0.87. Con demo desplegada en Vercel.</p>
+          <p class="en">BiLSTM classifying IMDB reviews: 86.6% accuracy, 0.87 F1. Includes a live demo on Vercel.</p>
+          <div class="repo-meta mono"><i class="lang nb"></i>Deep Learning · <span class="live">● demo</span></div>
+        </a>
+        <a class="card repo reveal spot" data-cat="ai" href="https://github.com/danielBrand12/space-objects-classification" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">🪐 space-objects-classification</span><span class="arrow">↗</span></div>
+          <p class="es">Tres modelos que clasifican objetos espaciales con 0.96, 0.96 y 0.95 de exactitud, con selección de variables.</p>
+          <p class="en">Three models classifying space objects at 0.96, 0.96 and 0.95 accuracy, with feature selection.</p>
+          <div class="repo-meta mono"><i class="lang nb"></i>Machine Learning · ★ 1</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="cs" href="https://github.com/danielBrand12/optimization-20252" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">📈 optimization-20252</span><span class="arrow">↗</span></div>
+          <p class="es">Métodos numéricos: bisección, falsa posición, razón dorada, Newton-Raphson, interpolación cuadrática y búsqueda aleatoria.</p>
+          <p class="en">Numerical methods: bisection, false position, golden ratio, Newton-Raphson, quadratic interpolation and random search.</p>
+          <div class="repo-meta mono"><i class="lang nb"></i>Jupyter · NumPy · SymPy</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="backend" href="https://github.com/danielBrand12/kombu-example" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">📨 kombu-example</span><span class="arrow">↗</span></div>
+          <p class="es">Ejemplo de mensajería con Kombu, la base de transporte de Celery para colas y eventos.</p>
+          <p class="en">Messaging example with Kombu, the transport layer behind Celery queues and events.</p>
+          <div class="repo-meta mono"><i class="lang py"></i>Python · Messaging</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="backend" href="https://github.com/danielBrand12/fastapi-project" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">⚡ fastapi-project</span><span class="arrow">↗</span></div>
+          <p class="es">Proyecto final de Arquitectura de Software construido con FastAPI.</p>
+          <p class="en">Software Architecture final project built with FastAPI.</p>
+          <div class="repo-meta mono"><i class="lang py"></i>Python · FastAPI</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="backend" href="https://github.com/danielBrand12/GestionFinancieraScreenplayPattern" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">🧪 GestionFinanciera</span><span class="arrow">↗</span></div>
+          <p class="es">Backend Java de gestión financiera con pruebas automatizadas bajo el patrón Screenplay.</p>
+          <p class="en">Java financial-management backend with automated tests using the Screenplay pattern.</p>
+          <div class="repo-meta mono"><i class="lang java"></i>Java · Testing</div>
+        </a>
+        <a class="card repo reveal spot" data-cat="cs" href="https://github.com/danielBrand12/estructuras-de-datos" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="mono">🌳 estructuras-de-datos</span><span class="arrow">↗</span></div>
+          <p class="es">Listas ligadas, matrices dispersas, árboles y grafos implementados desde cero.</p>
+          <p class="en">Linked lists, sparse matrices, trees and graphs implemented from scratch.</p>
+          <div class="repo-meta mono"><i class="lang py"></i>Python · ★ 1</div>
+        </a>
+      </div>
+      <a class="btn ghost center reveal" href="https://github.com/danielBrand12" target="_blank" rel="noopener"><span class="es">Ver los 33 repos en GitHub</span><span class="en">See all 33 repos on GitHub</span> ↗</a>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="section-title reveal"><span class="mono idx">06</span><span class="es">Formación</span><span class="en">Education</span></h2>
+      <div class="edu-grid">
+        <div class="card edu reveal spot"><span class="edu-ic">🎓</span><h3><span class="es">Ingeniería de Sistemas</span><span class="en">Systems Engineering</span></h3><p>Universidad de Antioquia</p></div>
+        <div class="card edu reveal spot"><span class="edu-ic">📚</span><h3><span class="es">Maestría en Gerencia de Proyectos</span><span class="en">Master's in Project Management</span></h3><p>Universidad Pontificia Bolivariana · <span class="es">en curso</span><span class="en">in progress</span></p></div>
+        <div class="card edu reveal spot"><span class="edu-ic">☁️</span><h3>AWS Solutions Architect</h3><p><span class="es">Certificación en arquitectura de soluciones</span><span class="en">Cloud solutions architecture certification</span></p></div>
+        <div class="card edu reveal spot"><span class="edu-ic">🧑‍🏫</span><h3><span class="es">Docencia</span><span class="en">Teaching</span></h3><p><span class="es">Clases de computación en la nube y sesiones sobre escalabilidad, disponibilidad y arquitectura.</span><span class="en">Cloud computing classes and sessions on scalability, availability and architecture.</span></p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="contact-card card reveal spot">
+        <p class="mono dim">// <span class="es">¿construimos algo?</span><span class="en">let's build something?</span></p>
+        <h2 class="big">
+          <span class="es">Hablemos de <span class="grad">IA en producción</span>.</span>
+          <span class="en">Let's talk <span class="grad">production AI</span>.</span>
+        </h2>
+        <p class="es">Abierto a roles construyendo sistemas de IA, aplicaciones agénticas y backends cloud-native.</p>
+        <p class="en">Open to roles building production AI systems, agentic applications and cloud-native backends.</p>
+        <div class="contact-links">
+          <button class="btn primary" id="copyEmail" data-email="danielbrandtaborda@gmail.com">
+            <span class="mono">danielbrandtaborda@gmail.com</span> <span class="copy-label"><span class="es">copiar</span><span class="en">copy</span></span>
+          </button>
+          <a class="btn ghost" href="https://www.linkedin.com/in/daniel-brand-taborda/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn ghost" href="https://github.com/danielBrand12" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn ghost" href="https://wa.me/573023857796" target="_blank" rel="noopener">WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Daniel Brand Taborda</span>
+    <span class="dim"><span class="es">Hecho a mano · HTML, CSS y JS puro</span><span class="en">Handmade · plain HTML, CSS & JS</span></span>
+  </footer>
+
+  <div class="toast mono" id="toast" role="status"></div>
+  <script src="main.js" defer></script>
+</body>
+</html>
